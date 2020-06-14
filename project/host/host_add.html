@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원</title>
+	<meta name="description" content="승운서점/문제집 판매" />
+	
+	<!-- META -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<!-- CSS -->
+	<link href="../css/layout.css" rel="stylesheet" />
+	<link href="../css/reset.css" rel="stylesheet" />
+	<link href="../css/member.css" rel="stylesheet" />
+	
+	<!-- JS -->
+	<script src="../js/jquery-3.5.1.js" type="text/javascript"></script>
+	<script type="text/javascript">
+	function view_click() {
+	  	var i,p,v,obj;
+	  	var args=view_click.arguments;
+	  	for (i=0; i<(args.length-2); i+=3) with (document) 
+	  	if (getElementById && ((obj=getElementById(args[i]))!=null)) { v=args[i+2];
+			if (obj.style) { 
+				obj=obj.style; 
+				v=(v=='show')?'block':(v=='hide')?'none':v; 
+			}
+			obj.display=v; 
+		}
+	}
+	function submit_item(){
+		var a= confirm("정말 등록하시겠습니까?");
+	}
+	</script>
+	<style>
+	/* 메뉴 */
+ aside { float:left; width:25%; }
+ aside {text-align:center; margin-bottom:10px; }
+ aside ul li a { display:block; width:100%; padding:10px 0;color:black;}
+ aside ul li a:hover { background:#eee; }
+ aside ul .checked{background-color:#ddd;}
+ 	/* //메뉴 */
+ section{float:left; width:75%; padding: 0 30px;}
+ .photo{float:left; width:300px; height:480px; align:center;}
+ #holder{width:300px; height:450px; border:1px solid black; margin:0 auto;}
+ 
+ #bookBody table tr td{padding:5px 0 5px 15px;}
+	</style>
+	
+</head>
+<body>
+
+<!-- HEADER -->
+<div id="header_member">
+	<h1 class="logo"><a href="../main.html">승운서점/문제집 판매</a></h1>
+</div><!-- //HEADER -->
+
+<!-- CONTENTS -->
+<div id="container_member">
+	<!-- 타이틀 -->
+	<h2>관리자</h2>
+	<!-- //타이틀 -->
+
+	<!-- 위치 네비게인션 -->
+	<div class="history_menu">
+		<ul>
+			<li class="home"><div><a href="../main.html">HOME</a> <span> &gt; </span></div></li>
+			<li><div><strong>HOST</strong><span> &gt; </span></div></li>
+			<li><div><strong>ITEM_ADD</strong></div></li>
+		</ul>
+	</div>
+	<!-- //위치 네비게인션 -->
+
+	<!-- 본문 -->
+	<div id="div_center" class="contants_area">
+		
+		<fieldset>
+		<aside>
+			<ul>
+				<li class="checked"><a href="" >상품등록</a></li>
+				<li><a href="./host_list.html">상품목록</a></li>
+				<li><a href="./host_order.html">주문목록</a></li>
+			</ul>
+		</aside>
+		
+		<section>
+			<div class="photo">
+				<div id="holder">사진을 등록하세요</div>
+				<p><input type=file id="fileUpload"></p>
+			</div>
+<script>/* 이미지 넣으면 뜨게하기 */
+	var upload = document.getElementById('fileUpload'),
+	    holder = document.getElementById('holder'),
+	    state = document.getElementById('status');
+
+	upload.onchange = function () {
+	  var file = upload.files[0],
+	      reader = new FileReader();
+	  reader.onload = function (event) {
+	    var img = new Image();
+	    img.src = event.target.result;
+	    // note: no onload required since we've got the dataurl...I think! :)
+	    img.width = 300;/* 그림크기 조정 */
+	    holder.innerHTML = '';
+	    holder.appendChild(img);
+	  };
+	  reader.readAsDataURL(file);
+		alert( reader.readAsDataURL(file));
+	  return false;
+	};
+</script>
+		<div id="bookBody">
+			<table>
+				<tr>
+					<th><label for="title"> 책 제목 : </label></th>
+					<td><input type="text" size="30" id="title"></td>
+				</tr>
+				<tr>
+					<th><label for="writer"> 작가 : </label></th>
+					<td><input type="text" size="30" id="writer"></td>
+				</tr>
+				<tr>
+					<th><label for="publiser"> 출판사 : </label></th>
+					<td><input type="text" size="30" id="publiser"></td>
+				</tr>
+				<tr>
+					<th><label for="date"> 출판일 </label></th>
+					<td><input type="date" size="30" id="date"></td>
+				</tr>
+				<tr>
+					<th><label for="price"> 정가 </label></th>
+					<td><input type="text" size="30" id="price"></td>
+				</tr>
+				<tr>
+					<th><label for="discount"> 할인율 </label></th>
+					<td><input type="number" id="discount"size="30" min="0" max="30" value="0"></td>
+				</tr>
+				<tr>
+					<th><label for="sort"> 분류 </label></th>
+					<td>
+						<select name="sort">
+							<optgroup label="산업인력관리공단">
+								<option value="tomok">토목</option>
+								<option value="gun">건설</option>
+								<option value="whan">환경</option>
+								<option value="energy">에너지</option>
+								<option value="elect">전기</option>
+								<option value="mech">기계</option>
+								<option value="san">산업응용</option>
+								<option value="wee">위생</option>
+								<option value="git">기타</option>
+							</optgroup>
+							<optgroup label="자격증">
+								<option value="jori">조리/미용/패션</option>
+								<option value="kor">한국어능력시험</option>
+								<option value="hanja">한자능력검정시험</option>
+								<option value="gongin">공인중계사/주택관리사</option>
+								<option value="finance">경제/금융/회계</option>
+								<option value="drive">운전/교통</option>
+							</optgroup>
+							<optgroup label="어학">
+								<option value="TOEIC">TOEIC</option>
+								<option value="TOFEL">TOFEL</option>
+								<option value="TEPS">TEPS</option>
+								<option value="OPIC">OPIC</option>
+								<option value="chinese">중국어</option>
+								<option value="jap">일본어</option>
+								<option value="git_lang">기타</option>
+							</optgroup>
+							<optgroup label="컴퓨터/IT">
+								<option value="programming">프로그래밍언어</option>
+								<option value="excel">오픽스(액셀/파워포인트)</option>
+								<option value="web">웹디자인/홈페이지</option>
+								<option value="graphic">그래픽/멀티그래픽</option>
+								<option value="computer">컴퓨터공학</option>
+								<option value="game">게임</option>
+							</optgroup>
+						</select>
+					
+					</td>
+				</tr>
+				<tr>
+					<th><label for="page"> 쪽수 </label></th>
+					<td><input type="text" id="page"size="30"></td>
+				</tr>
+				<tr>
+					<th><label for="ISBN"> ISBN </label></th>
+					<td><input type="text" id="ISBN"size="30"></td>
+				</tr>
+				<tr>
+					<th><label for="bookNum">수량</label></th>
+					<td><input type="number" id="bookNum" value="1" min="0" max="100" step="1"></td>
+				</tr>
+				<tr>
+					<td colspan="2" id="bookButton">
+						<div class="btn_defualt mb30">
+							<a href="#" class="btn_Red" onclick="submit_item();">등록하기</a>
+						</div>
+					</td>
+				</tr>
+			</table>	
+		</div>	
+		</section>
+		</fieldset><!-- 본문 -->
+	</div>
+</div>
+
+
+
+<div id="footer"><!-- footer 시작 -->
+	<div class="foot_menu">
+		<ul>
+			<li><a href="../intro.html">회사 소개</a></li>
+			<li><a href="#">이용약관</a></li>
+			<li><a href="#" class="curr">개인정보 취급방법</a></li>
+			<li><a href="#">고객센터</a></li>
+		</ul>
+	</div>
+
+	<div class="foot_con">
+		<div class="foot_logo">
+			<p><strong>승운서점</strong></p>
+		</div>
+
+		<div class="foot_address">
+			<p>승운서점 <span>l</span> 대표자: 한승운 <span>l</span> 소재지: 서울시 은평구 응암동</p>
+			<p>사업자등록번호: 123456789 <span>l</span> 통신판매업신고: 제 123456호</p>
+			<p>호스팅제공자: 한승운 <span>l</span> 개인정보관리책임자: 한승운<span>l</span> <a href="#">E-mail: swhan9404@naver.com</a></p>
+			<p><em>&copy; 한승운 2020 All rights reserved</em></p>
+		</div>
+
+		<div class="foot_costomer">
+			<p><strong>고객센터</strong></p>
+			<p><strong><em>010-2599-3237</em></strong></p>
+			<p>평일: 9시 30분 ~ 18시 30분<br>점심시간: 13시 20분 ~ 14시 30분<br>토요일·일요일·공휴일 휴무</p>
+			<div class="foot_costomer_btn">
+				<p><a href="#">게시판</a></p>
+				<p><a href="#">온라인문의</a></p>
+				<p><a href="../intro.html">홈페이지소개</a></p>
+			</div>
+		</div>
+	</div>
+</div><!-- footer 종료 -->
+</body>
+</html>
